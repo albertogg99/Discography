@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.uc3m.tastetify"
+        applicationId "com.uc3m.discography"
         minSdkVersion 29
         targetSdkVersion 30
         versionCode 1
