@@ -1,4 +1,4 @@
-package com.uc3m.tastetify
+package com.uc3m.discography
 
 import org.junit.Test
 

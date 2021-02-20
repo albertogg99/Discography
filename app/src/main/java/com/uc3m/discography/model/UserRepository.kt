@@ -1,4 +1,4 @@
-package com.uc3m.tastetify.model
+package com.uc3m.discography.model
 
 class UserRepository(private val userDAO: UserDAO) {
 

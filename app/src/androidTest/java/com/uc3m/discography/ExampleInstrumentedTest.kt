@@ -1,4 +1,4 @@
-package com.uc3m.tastetify
+package com.uc3m.discography
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

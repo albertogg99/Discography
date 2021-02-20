@@ -1,8 +1,8 @@
-package com.uc3m.tastetify.views
+package com.uc3m.discography.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.uc3m.tastetify.R
+import com.uc3m.discography.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

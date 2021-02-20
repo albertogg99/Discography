@@ -1,4 +1,4 @@
-package com.uc3m.tastetify.model
+package com.uc3m.discography.model
 
 import android.content.Context
 import androidx.room.Database
