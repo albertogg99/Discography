@@ -1,2 +1,2 @@
-# Tastetify
-Aplicación Android para visualizar tus canciones y tus artistas más esuchados en Spotify :) 
+# Discography
+Aplicación Android para visualizar la discografía de tus artistas favoritos :) 
