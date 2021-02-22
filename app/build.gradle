@@ -8,6 +8,13 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+    android {
+        viewBinding {
+            enabled = true
+        }
+    }
+
+
     defaultConfig {
         applicationId "com.uc3m.discography"
         minSdkVersion 29
