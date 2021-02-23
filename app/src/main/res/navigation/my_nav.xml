@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_loginFragment_to_userlistFragment"
             app:destination="@id/userlistFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_selectArtistFragment"
+            app:destination="@id/selectArtistFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -28,8 +31,13 @@
     </fragment>
     <fragment
         android:id="@+id/userlistFragment"
-        android:name="com.uc3m.discography.UserlistFragment"
+        android:name="com.uc3m.discography.views.UserlistFragment"
         android:label="fragment_userlist"
         tools:layout="@layout/fragment_userlist" />
+    <fragment
+        android:id="@+id/selectArtistFragment"
+        android:name="com.uc3m.discography.views.selectArtistFragment"
+        android:label="fragment_select_artist"
+        tools:layout="@layout/fragment_select_artist" />
 
 </navigation>
