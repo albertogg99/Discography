@@ -1,5 +1,6 @@
 package com.uc3m.discography.model
 
+import android.provider.ContactsContract
 import androidx.lifecycle.LiveData
 
 class UserRepository(private val userDAO: UserDAO) {
@@ -10,16 +11,8 @@ class UserRepository(private val userDAO: UserDAO) {
         userDAO.addUser(user)
     }
 
-    //val getUserByEmailAndPassword : LiveData<List<User>> = userDAO.getUserByEmailAndPassword()
-    //val getUserByEmailAndPassword :User = userDAO.getUserByEmailAndPassword(email, pass)
-
-
-    suspend fun getUserByEmailAndPassword(email: String, password: String): User{
-        return userDAO.getUserByEmailAndPassword(email, password)
-    }
-
-    fun login(email: String?, password: String?): LiveData<List<User>> {
-        return userDAO.login(email, password)
+    suspend fun findUser(email: String): User{
+       return userDAO.findUser(email)
     }
 
 }

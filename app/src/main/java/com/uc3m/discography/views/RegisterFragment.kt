@@ -56,8 +56,7 @@ class RegisterFragment : Fragment() {
         if(inputCheck(firstName, lastName, email, pass, cpass)){
             if (email.isValidEmail()) {
                 if (passCheck(pass,cpass)){
-                    val user = User( email, firstName, lastName, pass)
-                    userViewModel.addUser(user)
+                    userViewModel.addUser(email, firstName, lastName, pass)
                     Toast.makeText(requireContext(), "Successfully registered", Toast.LENGTH_LONG).show()
                     findNavController().navigate(R.id.action_registerFragment_to_loginFragment2)
                 }
