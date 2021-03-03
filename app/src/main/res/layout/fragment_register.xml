@@ -21,12 +21,13 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:hint="Email"
-            android:inputType="textPersonName"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/surnamereg" />
+            app:layout_constraintTop_toBottomOf="@+id/surnamereg"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/passreg"
@@ -36,12 +37,13 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:hint="Password"
-            android:inputType="textPersonName"
+            android:hint="@string/contrase_a"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailreg" />
+            app:layout_constraintTop_toBottomOf="@+id/emailreg"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/cpassreg"
@@ -51,12 +53,13 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:hint="Confirm Password"
-            android:inputType="textPersonName"
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passreg" />
+            app:layout_constraintTop_toBottomOf="@+id/passreg"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/namereg"
@@ -66,11 +69,12 @@
             android:layout_marginTop="34dp"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:hint="Name"
+            android:hint="@string/name"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonbacklogin" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonbacklogin"
+            android:autofillHints="" />
 
         <Button
             android:id="@+id/buttonconfirmarreg"
@@ -80,7 +84,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/button_rounded"
-            android:text="Register"
+            android:text="@string/register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cpassreg" />
@@ -93,11 +97,12 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:ems="10"
-            android:hint="Surname"
+            android:hint="@string/surname"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/namereg" />
+            app:layout_constraintTop_toBottomOf="@+id/namereg"
+            android:autofillHints="" />
 
         <Button
             android:id="@+id/buttonbacklogin"
@@ -106,7 +111,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/button_rounded"
-            android:text="Back"
+            android:text="@string/back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

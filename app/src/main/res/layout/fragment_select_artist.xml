@@ -5,26 +5,52 @@
     android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="views.selectArtistFragment">
+    tools:context=".views.LoginFragment">
 
 
-    <EditText
-        android:id="@+id/selectArtist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="343dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="343dp"
-        android:ems="10"
-        android:hint="@string/type_an_artist_name"
-        android:gravity="center_horizontal"
-        android:inputType="textPersonName"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="412dp"
+        android:layout_height="731dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.0">
+
+        <EditText
+            android:id="@+id/cajaSelectArtist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="300dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="216dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/escribe_el_nombre_de_un_artista"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toTopOf="@+id/botonSelectArtist"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/botonSelectArtist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="312dp"
+            android:background="@drawable/button_rounded"
+            android:text="@string/buscar_discograf_a"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
