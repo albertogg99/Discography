@@ -65,7 +65,7 @@ class LoginFragment : Fragment() {
             findNavController().navigate(R.id.action_loginFragment_to_selectArtistFragment)
         }
         else  {
-            Toast.makeText(requireContext(), "Wrong email or password ", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "El email o la contraseña no son correctos", Toast.LENGTH_LONG).show()
             //Toast.makeText(requireContext(), "Wrong email or password", Toast.LENGTH_LONG).show()
         }
 

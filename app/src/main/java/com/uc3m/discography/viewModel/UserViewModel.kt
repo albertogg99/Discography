@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.uc3m.discography.model.Hasher
+import com.uc3m.discography.util.Hasher
 import com.uc3m.discography.model.User
 import com.uc3m.discography.model.UserDatabase
 import com.uc3m.discography.model.UserRepository

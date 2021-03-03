@@ -38,7 +38,7 @@ class RegisterFragment : Fragment() {
 
 
         binding.buttonbacklogin.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_loginFragment2)
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
 
 
@@ -58,7 +58,7 @@ class RegisterFragment : Fragment() {
                 if (passCheck(pass,cpass)){
                     userViewModel.addUser(email, firstName, lastName, pass)
                     Toast.makeText(requireContext(), "Successfully registered", Toast.LENGTH_LONG).show()
-                    findNavController().navigate(R.id.action_registerFragment_to_loginFragment2)
+                    findNavController().navigate(R.id.action_registerFragment_to_selectArtistFragment)
                 }
                 else {
                     Toast.makeText(requireContext(), "Passwords are not the same", Toast.LENGTH_LONG).show()

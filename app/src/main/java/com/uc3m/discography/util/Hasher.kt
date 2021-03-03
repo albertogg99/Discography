@@ -1,4 +1,4 @@
-package com.uc3m.discography.model
+package com.uc3m.discography.util
 
 import java.security.MessageDigest
 

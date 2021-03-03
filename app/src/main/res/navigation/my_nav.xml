@@ -15,12 +15,12 @@
             app:destination="@id/registerFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
         <action
-            android:id="@+id/action_loginFragment_to_userlistFragment"
-            app:destination="@id/userlistFragment" />
-        <action
             android:id="@+id/action_loginFragment_to_selectArtistFragment"
             app:destination="@id/selectArtistFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_loginFragment_to_userlistFragment"
+            app:destination="@id/userlistFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -28,7 +28,10 @@
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
-            android:id="@+id/action_registerFragment_to_loginFragment2"
+            android:id="@+id/action_registerFragment_to_selectArtistFragment"
+            app:destination="@id/selectArtistFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
@@ -40,6 +43,19 @@
         android:id="@+id/selectArtistFragment"
         android:name="com.uc3m.discography.views.SelectArtistFragment"
         android:label="fragment_select_artist"
-        tools:layout="@layout/fragment_select_artist" />
+        tools:layout="@layout/fragment_select_artist" >
+        <action
+            android:id="@+id/action_selectArtistFragment_to_discographyFragment"
+            app:destination="@id/discographyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/discographyFragment"
+        android:name="com.uc3m.discography.views.DiscographyFragment"
+        android:label="fragment_discography"
+        tools:layout="@layout/fragment_discography" >
+        <argument
+            android:name="artist"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
