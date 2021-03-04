@@ -66,7 +66,6 @@ class LoginFragment : Fragment() {
         }
         else  {
             Toast.makeText(requireContext(), "El email o la contraseña no son correctos", Toast.LENGTH_LONG).show()
-            //Toast.makeText(requireContext(), "Wrong email or password", Toast.LENGTH_LONG).show()
         }
 
     }
