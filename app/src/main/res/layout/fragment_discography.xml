@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".views.DiscographyFragment">
 
+    <Button
+        android:id="@+id/buttonbackselectartist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button_rounded"
+        android:text="@string/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/albumList"
         android:layout_width="225dp"

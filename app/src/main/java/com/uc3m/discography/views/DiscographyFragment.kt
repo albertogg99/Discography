@@ -28,6 +28,10 @@ class DiscographyFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = binding.root
 
+        binding.buttonbackselectartist.setOnClickListener{
+            findNavController().navigate(R.id.action_discographyFragment_to_selectArtistFragment)
+        }
+
         //Para inicializar el discographyViewModel necesitamos el factory (que a su vez necesita
         // el repositorio)
         val discographyRepository = DiscographyRepository()

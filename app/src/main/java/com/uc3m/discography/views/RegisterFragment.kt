@@ -9,11 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.uc3m.discography.R
 import com.uc3m.discography.databinding.FragmentRegisterBinding
 import com.uc3m.discography.model.User
 import com.uc3m.discography.viewModel.UserViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class RegisterFragment : Fragment() {
@@ -33,8 +37,11 @@ class RegisterFragment : Fragment() {
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         binding.buttonconfirmarreg.setOnClickListener{
-            insertDataToDatabase()
+            lifecycleScope.launch{
+                insertDataToDatabase()
+            }
         }
+
 
 
         binding.buttonbacklogin.setOnClickListener {
@@ -45,7 +52,7 @@ class RegisterFragment : Fragment() {
         return view
     }
 
-    private fun insertDataToDatabase() {
+    private suspend fun insertDataToDatabase() {
         val firstName = binding.namereg.text.toString()
         val lastName = binding.surnamereg.text.toString()
         val email = binding.emailreg.text.toString()
@@ -56,9 +63,17 @@ class RegisterFragment : Fragment() {
         if(inputCheck(firstName, lastName, email, pass, cpass)){
             if (email.isValidEmail()) {
                 if (passCheck(pass,cpass)){
-                    userViewModel.addUser(email, firstName, lastName, pass)
-                    Toast.makeText(requireContext(), "Successfully registered", Toast.LENGTH_LONG).show()
-                    findNavController().navigate(R.id.action_registerFragment_to_selectArtistFragment)
+                    val us = withContext(Dispatchers.IO){
+                        userViewModel.findUser(email)
+                    }
+                    if (us!=null) {
+                        Toast.makeText(requireContext(), "Email already registered", Toast.LENGTH_LONG).show()
+                    }
+                    else {
+                        userViewModel.addUser(email, firstName, lastName, pass)
+                        Toast.makeText(requireContext(), "Successfully registered", Toast.LENGTH_LONG).show()
+                        findNavController().navigate(R.id.action_registerFragment_to_selectArtistFragment)
+                    }
                 }
                 else {
                     Toast.makeText(requireContext(), "Passwords are not the same", Toast.LENGTH_LONG).show()
@@ -85,7 +100,7 @@ class RegisterFragment : Fragment() {
     private fun inputCheck(firstName: String, lastName: String, email: String, pass: String, cpass : String ): Boolean {
 
 
-        return !( TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName) && TextUtils.isEmpty(email) && TextUtils.isEmpty(pass) && TextUtils.isEmpty(cpass))
+        return !( TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) || TextUtils.isEmpty(email) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(cpass))
     }
 
 

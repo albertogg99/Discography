@@ -47,6 +47,9 @@
         <action
             android:id="@+id/action_selectArtistFragment_to_discographyFragment"
             app:destination="@id/discographyFragment" />
+        <action
+            android:id="@+id/action_selectArtistFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/discographyFragment"

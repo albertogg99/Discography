@@ -36,6 +36,10 @@ class SelectArtistFragment : Fragment() {
             }
         }
 
+        binding.buttonbacklogin2.setOnClickListener{
+            findNavController().navigate(R.id.action_selectArtistFragment_to_loginFragment)
+        }
+
         return view
     }
 }
