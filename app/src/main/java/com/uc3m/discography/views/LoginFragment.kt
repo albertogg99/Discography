@@ -1,7 +1,6 @@
 package com.uc3m.discography.views
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +10,10 @@ import androidx.lifecycle.*
 import androidx.navigation.fragment.findNavController
 import com.uc3m.discography.R
 import com.uc3m.discography.databinding.FragmentLoginBinding
-import com.uc3m.discography.model.User
 import com.uc3m.discography.viewModel.UserViewModel
-import com.uc3m.discography.views.UserlistAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.security.MessageDigest
 
 
 class LoginFragment : Fragment() {
@@ -41,10 +37,6 @@ class LoginFragment : Fragment() {
             lifecycleScope.launch{
                 login()
             }
-        }
-
-        binding.usersButton.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_userlistFragment)
         }
 
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
