@@ -11,9 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
 import com.uc3m.discography.R
 import com.uc3m.discography.databinding.FragmentRegisterBinding
 import com.uc3m.discography.viewModel.UserViewModel
@@ -26,10 +23,8 @@ class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var userViewModel: UserViewModel
-    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
-
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
@@ -75,7 +70,6 @@ class RegisterFragment : Fragment() {
                     }
                     else {
                         userViewModel.addUser(email, firstName, lastName, pass)
-                        registrarUsuarioFirebase(email, pass)
                         Toast.makeText(requireContext(), "Successfully registered", Toast.LENGTH_LONG).show()
                         findNavController().navigate(R.id.action_registerFragment_to_selectArtistFragment)
                     }
@@ -107,22 +101,5 @@ class RegisterFragment : Fragment() {
 
         return !( TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) || TextUtils.isEmpty(email) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(cpass))
     }
-
-    private fun registrarUsuarioFirebase(email: String, password: String){
-        //val hasher : Hasher = Hasher()
-        //val hpass = hasher.sha256(password)
-
-        this.auth.createUserWithEmailAndPassword(email, password).
-            addOnCompleteListener { task: Task<AuthResult> ->
-                if (task.isSuccessful) {
-                    //Registration OK
-                    val firebaseUser = this.auth.currentUser!!
-                }
-                else {
-                    //Registration error
-                }
-            }
-    }
-
 
 }
