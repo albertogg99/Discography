@@ -1,6 +1,5 @@
 package com.uc3m.discography.views
 
-import android.R.attr
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
@@ -12,11 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.uc3m.discography.R
 import com.uc3m.discography.databinding.FragmentRegisterBinding
 import com.uc3m.discography.viewModel.UserViewModel

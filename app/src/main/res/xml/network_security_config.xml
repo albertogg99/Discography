@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">theaudiodb.com</domain>
+        <pin-set>
+            <pin digest="SHA-256">WuMDtalbDc8IU3aaWHk/nmZ26k367qB65+nfaU1GSzg=</pin>
+        </pin-set>
+    </domain-config>
+</network-security-config>
