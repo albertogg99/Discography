@@ -13,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class UserViewModel (application: Application): AndroidViewModel(application){
-    val readAll: LiveData<List<User>>
+    private val readAll: LiveData<List<User>>
     private val repository: UserRepository
     private val hasher: Hasher = Hasher()
 
@@ -27,8 +27,16 @@ class UserViewModel (application: Application): AndroidViewModel(application){
 
     fun addUser(email: String, firstName: String, lastName: String, pass: String){
         viewModelScope.launch(Dispatchers.IO) {
-            val hashedPass = hasher.sha256(pass)
-            val user = User( email, firstName, lastName, hashedPass)
+            val salt = hasher.generateSalt()
+            val hashedPass = hasher.hashPassword(pass, salt)
+            val passToStore = ByteArray(salt.size + hashedPass.size)
+            for (i in salt.indices){
+                passToStore[i] = salt[i]
+            }
+            for (i in hashedPass.indices){
+                passToStore[i+64] = hashedPass[i]
+            }
+            val user = User( email, firstName, lastName, passToStore)
             repository.addUser(user)
         }
 
@@ -44,12 +52,22 @@ class UserViewModel (application: Application): AndroidViewModel(application){
             Log.d("FailLogin", "Invalid login. User does not exist")
             return false
         }
-        else if (user.password == hasher.sha256(pass)) {
+        else {
+            val salt = ByteArray(64)
+            for (i in salt.indices){
+                salt[i] = user.password[i]
+            }
+            val hashedPass = hasher.hashPassword(pass, salt)
+
+            for (i in hashedPass.indices){
+                if (user.password[i+64] != hashedPass[i]){
+                    Log.d("FailLogin", "Invalid login. Password is not correct")
+                    return false
+                }
+            }
             Log.d("SuccessLogin", "User " + user.email + " has logged in correctly")
             return true
         }
-        Log.d("FailLogin", "Invalid login. Password is not correct")
-        return false
 
     }
 

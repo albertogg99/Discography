@@ -1,29 +1,36 @@
 package com.uc3m.discography.util
 
+import android.util.Log
+import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
+import java.security.SecureRandom
+import javax.crypto.SecretKeyFactory
+import javax.crypto.spec.PBEKeySpec
 
 class Hasher {
-    //Funcion hashString que realiza el hasheo dandole un String y un algoritmo
-    private fun hashString(input: String, algorithm: String): String {
-        return MessageDigest
-                .getInstance(algorithm)
-                .digest(input.toByteArray())
-                .fold("", { str, it -> str + "%02x".format(it) })
+
+    // Inspirado en "Implementing PBKDF2 in Java"
+    // de https://www.baeldung.com/java-password-hashing
+    fun hashPassword(password: String, salt: ByteArray): ByteArray{
+
+        //KeySpec
+        val iterations = 65536 //2^16
+        val keyLenght = 64
+        val spec = PBEKeySpec(password.toCharArray(), salt, iterations, keyLenght)
+
+        //KeyFactory
+        val secretKeyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512")
+        return secretKeyFactory.generateSecret(spec).encoded
+
     }
 
-    //Funcion para llamar a hashString con el algoritmo MD5
-    fun md5(input: String): String {
-        return hashString(input, "MD5")
-    }
 
-    //Funcion para llamar a hashString con el algoritmo SHA-256
-    fun sha256(input: String): String {
-        return hashString(input, "SHA-256")
-    }
-
-    //Funcion para llamar a hashString con el algoritmo SHA-256
-    fun pbkdf2(input: String): String {
-        return hashString(input, "PBKDF2WithHmacSHA512")
+    fun generateSalt(): ByteArray{
+        //Salt aleatorio
+        val random = SecureRandom()
+        val salt = ByteArray(64)
+        random.nextBytes(salt)
+        return salt
     }
 
 }
