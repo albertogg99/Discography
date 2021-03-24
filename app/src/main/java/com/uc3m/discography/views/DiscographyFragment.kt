@@ -57,7 +57,9 @@ class DiscographyFragment : Fragment() {
             if (response.isSuccessful){
                 val albums = response.body()?.album
                 if (albums != null) {
-                    adapter.setData(albums)
+                    if (artist != null) {
+                        adapter.setData(albums, artist)
+                    }
                 }
                 else{
                     Toast.makeText(requireContext(), "No hemos encontrado el artista. Prueba con otro :)", Toast.LENGTH_LONG).show()

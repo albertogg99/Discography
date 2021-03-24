@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.uc3m.discography.databinding.RecyclerViewAlbumsBinding
 import com.uc3m.discography.model.Album
@@ -13,21 +12,20 @@ import com.uc3m.discography.model.Album
 class DiscographyListAdapter: RecyclerView.Adapter<DiscographyListAdapter.MyViewHolder>() {
 
     private var discographyList = emptyList<Album>()
+    private var artist = String()
 
 
-    class MyViewHolder(val mContext : Context, val binding: RecyclerViewAlbumsBinding): RecyclerView.ViewHolder(binding.root){
+    class MyViewHolder(private val mContext : Context, val binding: RecyclerViewAlbumsBinding): RecyclerView.ViewHolder(binding.root){
         init {
             binding.albumName.setOnClickListener{
-                var vectoralbum : Array<String> = binding.albumName.text.toString().split(" ").toTypedArray()
-                //var vectorartista = binding.albumName.toString().split(" ")
-                var vector = vectoralbum //+ vectorartista
-                var url = "https://youtube.com/results?search_query="
-                for (i in 0..vector.size-1){
+                val vector : Array<String> = binding.albumName.text.toString().split(" ").toTypedArray()
+                var url = "https://youtube.com/results?search_query=${binding.artist.text}+"
+                for (i in vector.indices){
                     if (i!=vector.size-1){
-                        url=url+"${vector[i]}+"
+                        url += "${vector[i]}+"
                     }
                     else {
-                        url=url+"${vector[i]}"
+                        url += vector[i]
                     }
                 }
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -47,16 +45,22 @@ class DiscographyListAdapter: RecyclerView.Adapter<DiscographyListAdapter.MyView
         with(holder){
             binding.albumName.text = currentAlbum.strAlbum
             binding.albumYear.text = currentAlbum.intYearReleased
+            binding.artist.text = artist
         }
+
     }
 
     override fun getItemCount(): Int {
         return discographyList.size
     }
 
-    fun setData(discographyList: List<Album>){
+    fun setData(discographyList: List<Album>, artist: String){
         this.discographyList = discographyList
+        this.artist = artist
+
         notifyDataSetChanged()
     }
+
+
 
 }
