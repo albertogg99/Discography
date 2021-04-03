@@ -25,10 +25,10 @@ class Hasher {
     }
 
 
-    fun generateSalt(): ByteArray{
+    fun generateSalt(size: Int): ByteArray{
         //Salt aleatorio
         val random = SecureRandom()
-        val salt = ByteArray(64)
+        val salt = ByteArray(size)
         random.nextBytes(salt)
         return salt
     }

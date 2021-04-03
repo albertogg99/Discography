@@ -27,7 +27,7 @@ class UserViewModel (application: Application): AndroidViewModel(application){
 
     fun addUser(email: String, firstName: String, lastName: String, pass: String){
         viewModelScope.launch(Dispatchers.IO) {
-            val salt = hasher.generateSalt()
+            val salt = hasher.generateSalt(64)
             val hashedPass = hasher.hashPassword(pass, salt)
             val passToStore = ByteArray(salt.size + hashedPass.size)
             for (i in salt.indices){
@@ -58,7 +58,6 @@ class UserViewModel (application: Application): AndroidViewModel(application){
                 salt[i] = user.password[i]
             }
             val hashedPass = hasher.hashPassword(pass, salt)
-
             for (i in hashedPass.indices){
                 if (user.password[i+64] != hashedPass[i]){
                     Log.d("FailLogin", "Invalid login. Password is not correct")
