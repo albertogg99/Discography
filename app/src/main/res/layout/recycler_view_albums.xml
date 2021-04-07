@@ -9,13 +9,17 @@
 
     <TextView
         android:id="@+id/albumName"
-        android:layout_width="match_parent"
-        android:layout_height="28dp"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="64dp"
         android:gravity="center"
+        android:textSize="20sp"
+        android:background="@drawable/button_rounded_noback"
+        android:textColor="@color/black"
+        android:text="@string/this_is_album_title"
         app:layout_constraintBottom_toTopOf="@+id/albumYear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
@@ -24,12 +28,15 @@
 
     <TextView
         android:id="@+id/albumYear"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:gravity="center"
+        android:background="@drawable/button_rounded"
+        android:textColor="@color/black"
+        android:text="@string/this_is_album_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/albumName" />
