@@ -27,14 +27,14 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
+            android:autofillHints=""
             android:ems="10"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <EditText
             android:id="@+id/passlog"
@@ -79,15 +79,15 @@
             app:layout_constraintTop_toBottomOf="@+id/botonlogin" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="162dp"
-            android:layout_height="128dp"
-            android:layout_marginTop="100dp"
-            android:src="@drawable/ic_action_name"
+            android:id="@+id/imageView2"
+            android:layout_width="198dp"
+            android:layout_height="182dp"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/logoapp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/logo" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
