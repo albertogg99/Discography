@@ -27,14 +27,15 @@ class UserViewModel (application: Application): AndroidViewModel(application){
 
     fun addUser(email: String, firstName: String, lastName: String, pass: String){
         viewModelScope.launch(Dispatchers.IO) {
-            val salt = hasher.generateSalt(64)
+            val size = 64
+            val salt = hasher.generateSalt(size)
             val hashedPass = hasher.hashPassword(pass, salt)
             val passToStore = ByteArray(salt.size + hashedPass.size)
             for (i in salt.indices){
                 passToStore[i] = salt[i]
             }
             for (i in hashedPass.indices){
-                passToStore[i+64] = hashedPass[i]
+                passToStore[i+size] = hashedPass[i]
             }
             val user = User( email, firstName, lastName, passToStore)
             repository.addUser(user)
@@ -47,19 +48,20 @@ class UserViewModel (application: Application): AndroidViewModel(application){
     }
 
     suspend fun logUser(email: String, pass: String) : Boolean{
+        val size = 64
         val user = findUser(email)
         if(user == null){
             Log.d("FailLogin", "Invalid login. User does not exist")
             return false
         }
         else {
-            val salt = ByteArray(64)
+            val salt = ByteArray(size)
             for (i in salt.indices){
                 salt[i] = user.password[i]
             }
             val hashedPass = hasher.hashPassword(pass, salt)
             for (i in hashedPass.indices){
-                if (user.password[i+64] != hashedPass[i]){
+                if (user.password[i+size] != hashedPass[i]){
                     Log.d("FailLogin", "Invalid login. Password is not correct")
                     return false
                 }

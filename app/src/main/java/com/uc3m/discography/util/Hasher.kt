@@ -15,7 +15,7 @@ class Hasher {
 
         //KeySpec
         val iterations = 65536 //2^16
-        val keyLenght = 64
+        val keyLenght = 512
         val spec = PBEKeySpec(password.toCharArray(), salt, iterations, keyLenght)
 
         //KeyFactory
