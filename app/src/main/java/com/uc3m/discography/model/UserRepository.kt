@@ -1,6 +1,5 @@
 package com.uc3m.discography.model
 
-import android.provider.ContactsContract
 import androidx.lifecycle.LiveData
 
 class UserRepository(private val userDAO: UserDAO) {

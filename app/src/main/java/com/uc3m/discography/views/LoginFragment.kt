@@ -22,7 +22,7 @@ class LoginFragment : Fragment() {
     private lateinit var userViewModel: UserViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
         val view = binding.root

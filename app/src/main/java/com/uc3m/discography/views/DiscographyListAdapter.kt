@@ -21,11 +21,10 @@ class DiscographyListAdapter: RecyclerView.Adapter<DiscographyListAdapter.MyView
                 val vector : Array<String> = binding.albumName.text.toString().split(" ").toTypedArray()
                 var url = "https://youtube.com/results?search_query=${binding.artist.text}+"
                 for (i in vector.indices){
-                    if (i!=vector.size-1){
-                        url += "${vector[i]}+"
-                    }
-                    else {
-                        url += vector[i]
+                    url += if (i!=vector.size-1){
+                        "${vector[i]}+"
+                    } else {
+                        vector[i]
                     }
                 }
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
