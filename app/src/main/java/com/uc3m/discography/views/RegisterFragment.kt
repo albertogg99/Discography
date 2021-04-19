@@ -66,24 +66,24 @@ class RegisterFragment : Fragment() {
                         userViewModel.findUser(email)
                     }
                     if (us!=null) {
-                        Toast.makeText(requireContext(), "Email already registered", Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), "Este email ya esta registrado", Toast.LENGTH_LONG).show()
                     }
                     else {
                         userViewModel.addUser(email, firstName, lastName, pass)
-                        Toast.makeText(requireContext(), "Successfully registered", Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), "Registrado correctamente", Toast.LENGTH_LONG).show()
                         findNavController().navigate(R.id.action_registerFragment_to_selectArtistFragment)
                     }
                 }
                 else {
-                    Toast.makeText(requireContext(), "Passwords are not the same", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "Las contraseñas no coinciden", Toast.LENGTH_LONG).show()
                 }
             }
             else{
-                Toast.makeText(requireContext(), "Invalid Email", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Email inválido", Toast.LENGTH_LONG).show()
             }
 
         }else{
-            Toast.makeText(requireContext(), "Fill all the fields to register", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Rellena todos los campos", Toast.LENGTH_LONG).show()
         }
     }
 
